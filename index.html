@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Naturbase faktaark</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.22/esri/css/esri.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+    <script src="https://js.arcgis.com/3.22/"></script>
+    <style>
+        body {
+            line-height: 1.5;
+            font-size: 0.8em;
+        }
+
+        #miljodir-header-bg {
+            background: linear-gradient(#ffFFFF, #d8d8d8);
+        }
+
+        #miljodir-header-table {
+            margin-left: auto;
+            margin-right: auto;
+            vertical-align: middle;
+        }
+
+        #miljodir-header-tittelTd {
+            color: #101010;
+            display: table-cell;
+            font-family: 'Palatino Linotype', serif;
+            font-size: 22px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 500;
+            width: 49%;
+            vertical-align: middle;
+            border: 0;
+        }
+
+        #miljodir-barTd {
+            vertical-align: middle;
+            width: 5%;
+        }
+
+        #miljodir-barDiv {
+            width: 1px;
+            height: 42px;
+            background: url("img/bar42.png") no-repeat;
+        }
+
+        #miljodir-header-logoTd {
+            padding-left: 20px;
+            width: 49%;
+        }
+
+        #miljodir-logo {
+            width: 152px;
+            height: 34px;
+        }
+
+        #miljodir-header-tr {
+            height: 62px;
+        }
+
+        #map {
+            border-radius: 1px;
+            -moz-border-radius: 1px;
+            overflow: hidden;
+            border: solid 1px #666666;
+            height: 430px;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        img.ramme {
+            border-radius: 1px;
+            -moz-border-radius: 1px;
+            overflow: hidden;
+            border: solid 1px #666666;
+            width: 100%;
+        }
+
+        .noBorder {
+            border: 0px;
+            padding: 0;
+            margin: 0;
+            border-collapse: collapse;
+        }
+
+        .centeredRow {
+            text-align: center
+        }
+
+        .heading {
+            font-size: 1.5em;
+            font-family: "Palatino Linotype";
+            font-weight: bold;
+            margin-bottom: 3px;
+            color: #016968;
+        }
+
+        .headingMedium {
+            font-size: 1.4em;
+            font-family: "Palatino Linotype";
+            font-weight: normal;
+            margin-bottom: 3px;
+            color: #016968;
+        }
+
+        .centerImg {
+            vertical-align: middle;
+            text-align: center;
+            top: 50%;
+            bottom: 50%;
+
+        }
+
+        h2 {
+            margin-top: 0;
+            padding-top: 0;
+            font-weight: normal;
+            font-family: 'Open Sans Bold';
+            font-size: 16px;
+            color: #016968;
+            line-height: 1;
+        }
+
+        /* mindre luft i tabellen */
+        .table td {
+            padding: .30em;
+        }
+
+    </style>
+    <script src="js/faktaark_config.js"></script>
+    <script src="js/faktaark.js"></script>
+</head>
+
+<body>
+    <div id="miljodir-header-bg">
+        <table id="miljodir-header-table">
+            <tbody>
+                <tr id="miljodir-header-tr">
+                    <td id="miljodir-header-logoTd">
+                        <img src="img/md-logo-304x68.png" id="miljodir-logo">&nbsp;&nbsp;&nbsp;
+                        <a href="http://www.miljodirektoratet.no"></a>
+                    </td>
+                    <td id="miljodir-barTd">
+                        <div id="miljodir-barDiv"></div>
+                    </td>
+                    <td id="miljodir-header-tittelTd">Naturbase faktaark</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <span class="heading">
+                    <div id="temaNavnDiv"></div>
+                </span>
+                <div id="utskriftsDatoDiv">Utskriftsdato: </div>
+                <span class="headingMedium">
+                    <br/>
+                    <div id="overskriftDiv"></div>
+                </span>
+                <br/>
+                <table class="table table-condensed">
+                    <thead></thead>
+                    <tbody id="egenskapTabellBodyDiv"></tbody>
+                </table>
+                <div id="spesialTabellerBodyDiv"></div> <!-- kan holde flere frittstående tabeller om nødvendig -->
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <p style="page-break-before: always"></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div id="map"></div>
+                <!-- <div class="centeredRow" id="mapBeskrivelseDiv"></div> -->
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <br/>
+
+    <p style="page-break-before: always"></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <span class="headingMedium">
+                    <div id="vedleggheadingDiv"></div>
+                </span>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <br/>
+    <div class="container" id="BildeContainer"></div>
+    <div class="container" id="DokumentContainer"></div>
+    <div class="container" id="VedleggContainer"></div>
+
+    <br/>
+
+    <div class="container" id="feilContainer" style='display: none;'>
+        <div class="row">
+            <div class="col-md-1"></div>
+                <div  id="feilDiv" class="col-md-10 alert alert-warning"></div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</body>
+</html>
