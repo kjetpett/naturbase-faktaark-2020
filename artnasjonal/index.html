@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, ,maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css"  />
+    <link rel="stylesheet" href="css/faktaark.css" />
+
+    <title>Faktaark, arter av nasjonal forvaltningsinteresse</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
+
+    <script src="https://js.arcgis.com/4.19/"></script>
+    <script src="js/artnasjonal.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-sm-4">
+                <img src="img/logo-primary.svg" width="200" height="80" class="d-inline-block align-center" alt="">
+            </div>    
+            <div class="col-sm-8">
+                <h2>Arter av nasjonal forvaltningsinteresse</h2>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container" id="innhold1">
+        <div class="row">
+            <div class="col-sm-4"><b>Utskrtiftsdato:</b></div><div class="col-sm-8" id="datoDiv">2011-01-01</div>
+        </div>
+    </div>
+
+    <div class="container" id="kriterier">
+        <div class="row">
+            <div class="col-sm-4"><b>Utvalgskriterier:</b></div>
+            <div class="col-sm-6">
+                <table class="table table-bordered">
+                    <tbody id="kriterierTablebody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>   
+
+    <p style="page-break-before: always"></p>
+    <div class="container">
+        <div class="col-sm-12"> 
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <br>    
+    <div class="container">
+        <h3>Datagrunnlag fra Artskart</h3>
+        <div id="wrapper"></div>
+    </div>
+
+    <div class="container">
+        <div class="col-sm-12"> 
+            <button type="button" class="collapsible">Om datagrupplaget for tjenesten</button>
+            <div class="content">
+                <p>Lorem ipsum... Data hentes fra Artskart hos Artsdatabanken. Egenskaper som er relevant for
+                    forvaltning
+                    legges direkte til kartlaget i tjenesten. I mange tilfeller er det mer enn én observasjon av samme
+                    art
+                    på nøyaktig samme geografiske plassering. I slike tilfeller viser tjenesten en liste over alle de
+                    ulike
+                    aktivitetene som er observert i hele perioden det gjort observasjoner. Bakgrunnsdata er lagret som
+                    en
+                    liste som kan lastes ned, ses i faktaark eller brukes direkte i kartklienter som støtter ArcGIS
+                    REST
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="container" style="text-align: center;">
+        <p>Miljødirektoratet 2021</p>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
