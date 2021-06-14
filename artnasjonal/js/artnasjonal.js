@@ -294,7 +294,7 @@ const funnFeltdefinisjoner = [
 ];
 
 const kriterierFeltdefinisjoner = [
-    { navn: "Krit_Ansvarsart",      alias: "Ansvarsat"},
+    { navn: "Krit_Ansvarsart",      alias: "Ansvarsart"},
     { navn: "Krit_TruetArt",        alias: "Truet art"},
     { navn: "Krit_AndreSpesHensyn", alias: "Annen spesielt hensynskrevende art"},
     { navn: "Krit_SpesOkologisk",   alias: "Spesiell økologisk form"},
