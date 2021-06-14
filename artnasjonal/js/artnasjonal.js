@@ -1,3 +1,13 @@
+var temaId;
+try {
+    temaId = getURLParameter('id').toUpperCase();
+}
+catch (err) {
+    var temaId =  '9.545184_63.418554_3859'; // punkt
+    // temaId = '';
+    console.log(err);
+}
+
 require([
     "esri/config",
     "esri/geometry/Extent",
@@ -62,7 +72,7 @@ require([
             fadeOnZoom: true
         });
 
-        var temaId = '9.545184_63.418554_3859'; // punkt
+        // var temaId = '9.545184_63.418554_3859'; // punkt
         // var temaId = '6.583852_58.097869_3531'; // omr
         // Create graphics layer and symbol to use for displaying the results of query
         var geometriGraphicsLayer = new GraphicsLayer();
@@ -112,6 +122,7 @@ require([
 
         omrQueryTask.execute(geometriQuery).then(function (results) {
             if (results.features.length > 0) {
+                featureTilSkjerm(results.features[0].attributes);
                 let omr = {
                     type: "polygon", // autocasts as new Polygon()
                     rings: results.features[0].geometry.rings
@@ -327,3 +338,6 @@ function formatterData (data, definisjon) {
 }
 // var myDate = new Date(1601528702*1000);
 // console.log(myDate.toLocaleDateString();
+function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search.toLowerCase()) || [, ''])[1].replace(/\+/g, '%20')) || null;
+}
