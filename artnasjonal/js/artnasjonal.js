@@ -171,7 +171,7 @@ require([
                 search: true,
                 data: data,
                 resizable: false,
-                // sort: true,
+                sort: true,
                 language: {
                     'search': {
                       'placeholder': '🔍 Søkefilter...'

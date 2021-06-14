@@ -57,52 +57,34 @@
         </div>
     </div>
 
-    <br>    
+    <br> 
+
     <div class="container">
         <h3>Datagrunnlag fra Artskart</h3>
         <div id="wrapper"></div>
     </div>
 
+    <br>
+
     <div class="container">
-        <div class="col-sm-12"> 
-            <button type="button" class="collapsible">Om datagrupplaget for tjenesten</button>
-            <div class="content">
-                <p>Lorem ipsum... Data hentes fra Artskart hos Artsdatabanken. Egenskaper som er relevant for
-                    forvaltning
-                    legges direkte til kartlaget i tjenesten. I mange tilfeller er det mer enn én observasjon av samme
-                    art
-                    på nøyaktig samme geografiske plassering. I slike tilfeller viser tjenesten en liste over alle de
-                    ulike
-                    aktivitetene som er observert i hele perioden det gjort observasjoner. Bakgrunnsdata er lagret som
-                    en
-                    liste som kan lastes ned, ses i faktaark eller brukes direkte i kartklienter som støtter ArcGIS
-                    REST
-                </p>
-            </div>
+        <a href="#demo" class="btn btn-primary" data-toggle="collapse">Om datagrunnlaget</a>
+        <div id="demo" class="collapse"><br>
+            Data hentes fra Artskart hos Artsdatabanken. Egenskaper som er relevant for
+            forvaltning
+            legges direkte til kartlaget i tjenesten. I mange tilfeller er det mer enn én observasjon av samme
+            art
+            på nøyaktig samme geografiske plassering. I slike tilfeller viser tjenesten en liste over alle de
+            ulike
+            aktivitetene som er observert i hele perioden det gjort observasjoner. Bakgrunnsdata er lagret som
+            en
+            liste som kan lastes ned, ses i faktaark eller brukes direkte i kartklienter som støtter ArcGIS
+            REST
         </div>
     </div>
-    <br>
 
     <div class="container" style="text-align: center;">
         <p>Miljødirektoratet 2021</p>
     </div>
-
-    <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        }
-    </script>
 </body>
 
 </html>
