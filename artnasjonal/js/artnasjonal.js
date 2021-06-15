@@ -136,15 +136,26 @@ require([
 
         observasjonQueryTask.execute(observasjonQuery).then(function (results) {
             var columns = [];
-            for (i = 0; i < funnFeltdefinisjoner.length; i++ ) {
-                columns.push(funnFeltdefinisjoner[i].navn);
+            for (i = 0; i < funnFeltdefinisjoner.length; i++) {
+                if (funnFeltdefinisjoner[i].sortering == false) {
+                    columns.push(
+                        {
+                            name: funnFeltdefinisjoner[i].alias,
+                            sort: {
+                                enabled: false
+                            }
+                        });
+                }
+                else {
+                    columns.push(funnFeltdefinisjoner[i].alias);
+                }
             }
             var data = [];
             for (i = 0; i < results.features.length; i++) {
                 datarow = [];
                 attributes = results.features[i].attributes;
-                for (j = 0; j < columns.length; j++) {
-                    attributevalue = attributes[columns[j]];
+                for (j = 0; j < funnFeltdefinisjoner.length; j++) {
+                    attributevalue = attributes[funnFeltdefinisjoner[j].navn];
                     attributevalue = formatterData(attributevalue, funnFeltdefinisjoner[j].type);
                     datarow.push(attributevalue);
                 }
@@ -171,7 +182,9 @@ require([
                 search: true,
                 data: data,
                 resizable: false,
-                sort: true,
+                sort: {
+                    multiColumn: false
+                },
                 language: {
                     'search': {
                       'placeholder': '🔍 Søkefilter...'
@@ -231,34 +244,36 @@ require([
             console.log("Layer moved: ", event.moved);
         });
 
+        $('#utskriftsDatoDiv').text(new Date().toLocaleDateString());
+
         function featureTilSkjerm(featureAttributes) {
             console.log(feltDefinisjoner1);
             for (i = 0; i < feltDefinisjoner1.length; i++) {
                 var value = formatterData(featureAttributes[feltDefinisjoner1[i].navn], feltDefinisjoner1[i].type);
-                $("#innhold1").append(`<div class="row"><div class="col-sm-4"><b>${feltDefinisjoner1[i].navn}:</b></div><div class="col-sm-8">${value}</div></div>`);
+                $("#innhold1").append(`<div class="row"><div class="col-sm-4"><b>${feltDefinisjoner1[i].alias}:</b></div><div class="col-sm-8">${value}</div></div>`);
             }
             for (i = 0; i < kriterierFeltdefinisjoner.length; i++) {
                 var value = formatterData(featureAttributes[kriterierFeltdefinisjoner[i].navn], 'kriterie');
-                $("#kriterierTablebody").append(`<tr><td>${kriterierFeltdefinisjoner[i].alias}</td><td style="text-align: center;">${value}</td></tr>`);
+                $("#kriterierTablebody").append(`<tr><td>${kriterierFeltdefinisjoner[i].alias}</td><<td>${kriterierFeltdefinisjoner[i].forklaring}</td><td style="text-align: center; vertical-align:middle;">${value}</td></tr>`);
             }
         }
     });
 
 const feltDefinisjoner1 = [
-    { navn: "ArtNasjonalId",        type: "text"    },
-    { navn: "VitenskapeligNavn",    type: "text"    },
-    { navn: "VitenskapeligNavnId",  type: "text"    },
-    { navn: "NorskNavn",            type: "text"    },
-    { navn: "Gruppe",               type: "text"    },
-    { navn: "Aktivitet",            type: "text"    },
-    { navn: "AntallObservasjoner",  type: "int"     },
-    { navn: "DatoFra",              type: "epoch"   },
-    { navn: "DatoTil",              type: "epoch"   },
-    { navn: "Presisjon",            type: "int"     },
-    { navn: "Kommune",              type: "text"    },
-    { navn: "Status",               type: "text"    },
-    { navn: "Fylke",                type: "text"    },
-    { navn: "Krit_Kombinert",       type: "text"    }
+    { navn: "ArtNasjonalId",        type: "text",   alias: "ArtNasjonalId"             },
+    { navn: "VitenskapeligNavn",    type: "text",   alias: "Vitenskapelig navn"        },
+    { navn: "VitenskapeligNavnId",  type: "text",   alias: "Vitenskapelig navn Id"     },
+    { navn: "NorskNavn",            type: "text",   alias: "Norsk navn"                },
+    { navn: "Gruppe",               type: "text",   alias: "Artsgruppe"                },
+    { navn: "Aktivitet",            type: "text",   alias: "Aktivitet"                 },
+    { navn: "AntallObservasjoner",  type: "int",    alias: "Antall enkeltobservasjoner"},
+    { navn: "DatoFra",              type: "epoch",  alias: "Dato fra"                  },
+    { navn: "DatoTil",              type: "epoch",  alias: "Dato til"                  },
+    { navn: "Presisjon",            type: "int",    alias: "Presisjon (m)"             },
+    { navn: "Status",               type: "text",   alias: "Rødlistekategori"          },
+    { navn: "Kommune",              type: "text",   alias: "Kommune (kommunenummer)"   },
+    { navn: "Fylke",                type: "text",   alias: "Fyklke"                    },
+    { navn: "Krit_Kombinert",       type: "text",   alias: "Utvalgskriterier"          }
 ];
 
 /*
@@ -275,6 +290,7 @@ Krit_FredetArt: 1
 Krit_NarTruetArt: null
 Krit_FremmedArt: null
 Krit_Kombinert: fredete arter
+Forvaltningskategori
     Gruppe: insekter
     VitenskapeligNavnId: 5957
     Status: LC
@@ -289,30 +305,33 @@ Krit_Kombinert: fredete arter
 */
 
 const funnFeltdefinisjoner = [
-    { navn: "CollectedDate",        type: "epoch"   },
-    { navn: "Behavior",             type: "text"    },
-    { navn: "Notes",                type: "text"    },
-    { navn: "Locality",             type: "text"    },
-    { navn: "Count_",               type: "int"     },
-    { navn: "Sex",                  type: "text"    },
-    { navn: "Collector",            type: "text"    },
-    { navn: "BasisOfRecord",        type: "text"    },
-    { navn: "IdentifiedBy",         type: "text"    },
-    { navn: "DatetimeIdentified",   type: "epoch"   },
-    { navn: "Id",                   type: "text"    },
-    { navn: "Institution",          type: "text"    },
-    { navn: "Collection",           type: "text"    }
+    { navn: "CollectedDate",        type: "epoch",      alias: "Dato funnet"        },
+    { navn: "Behavior",             type: "text",       alias: "Aktivtet"           },
+    { navn: "Notes",                type: "text",       alias: "Notater"            },
+    { navn: "Locality",             type: "text",       alias: "Lokalitet"          },
+    { navn: "Count_",               type: "int",        alias: "Antall",            },            
+    { navn: "Sex",                  type: "text",       alias: "Kjønn"              },
+    { navn: "Habitat",              type: "text",       alias: "Habitat"            },
+    { navn: "Collector",            type: "text",       alias: "Finner"             },
+    { navn: "BasisOfRecord",        type: "text",       alias: "Type funn"          },
+    { navn: "IdentifiedBy",         type: "text",       alias: "Valideringsstatus"  },
+    { navn: "DatetimeIdentified",   type: "epoch",      alias: "Artsbestemt av"     },
+    { navn: "Institution",          type: "text",       alias: "Institusjon"        },
+    { navn: "Collection",           type: "text",       alias: "Samling/database"   },
+    { navn: "Id",                   type: "text",       alias: "Id"                 },
+    { navn: "ObsUrl",               type: "url",        alias: "Observation URL"    },
+    { navn: "DetailUrl",            type: "url",        alias: "Details URL"        }             
 ];
 
 const kriterierFeltdefinisjoner = [
-    { navn: "Krit_Ansvarsart",      alias: "Ansvarsart"},
-    { navn: "Krit_TruetArt",        alias: "Truet art"},
-    { navn: "Krit_AndreSpesHensyn", alias: "Annen spesielt hensynskrevende art"},
-    { navn: "Krit_SpesOkologisk",   alias: "Spesiell økologisk form"},
-    { navn: "Krit_PrioritertArt",   alias: "Prioritert art"},
-    { navn: "Krit_FredetArt",       alias: "Fredet art"},
-    { navn: "Krit_NarTruetArt",     alias: "Nær truet art"},
-    { navn: "Krit_FremmedArt",      alias: "Fremmed art"}
+    { navn: "Krit_Ansvarsart",      forklaring: ">25% av europeisk bestand i Norge",                alias: "Ansvarsart"},
+    { navn: "Krit_TruetArt",        forklaring: "CR,EN,VU i Norsk Rødliste",                        alias: "Truet art"},
+    { navn: "Krit_AndreSpesHensyn", forklaring: "andre arter av nasjonal forvaltningsinteresse",    alias: "Annen spesielt hensynskrevende art"},
+    { navn: "Krit_SpesOkologisk",   forklaring: "Former eller underarter av arter av nasjonal forvaltningsinteresse som ikke vurderes i Rødlisten", alias: "Spesiell økologisk form"},
+    { navn: "Krit_PrioritertArt",   forklaring: "prioritert art i medhold av naturmangfoldloven",   alias: "Prioritert art"},
+    { navn: "Krit_FredetArt",       forklaring: "fredet i medhold av naturvernloven",               alias: "Fredet art"},
+    { navn: "Krit_NarTruetArt",     forklaring: "NT i norsk rødliste",                              alias: "Nær truet art"},
+    { navn: "Krit_FremmedArt",      forklaring: "Svært høy og høy risiko i svartelista 2012, samt noen arter fra Svarteliste 2007",                alias: "Fremmed art"}
 ];
 
 /*
@@ -327,7 +346,8 @@ function formatterData (data, definisjon) {
     }
     else if (data) {
         if (definisjon == "epoch") {
-            data = new Date(data).toISOString().substring(0, 10); // returner dato
+            // data = new Date(data).toISOString().substring(0, 10); // returner dato
+            data = new Date(data).toLocaleDateString();
         }
     }
     else {
