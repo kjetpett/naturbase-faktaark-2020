@@ -16,6 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
 
     <script src="https://js.arcgis.com/4.19/"></script>
+    <script src="js/artnasjonal-config.js"></script>
     <script src="js/artnasjonal.js"></script>
 </head>
 
@@ -41,12 +42,12 @@
 
     <div class="container" id="kriterier">
         <div class="row">
-            <div class="col-sm-4"><b>Utvalgskriterier:</b></div>
+            <div class="col-sm-4"><b>Utvalgskriterier, tabell:</b></div>
             <div class="col-sm-8">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                          <th>Kriterie</th>
+                          <th>Kriterium</th>
                           <th>Forklaring</th>
                           <th>Valg</th>
                         </tr>
@@ -74,19 +75,11 @@
 
     <br>
 
-    <div class="container">
+    <div class="container"><!-- todo grønn knapp -->
         <a href="#demo" class="btn btn-primary" data-toggle="collapse">Om datagrunnlaget</a>
         <div id="demo" class="collapse"><br>
-            Data hentes fra Artskart hos Artsdatabanken. Egenskaper som er relevant for
-            forvaltning
-            legges direkte til kartlaget i tjenesten. I mange tilfeller er det mer enn én observasjon av samme
-            art
-            på nøyaktig samme geografiske plassering. I slike tilfeller viser tjenesten en liste over alle de
-            ulike
-            aktivitetene som er observert i hele perioden det gjort observasjoner. Bakgrunnsdata er lagret som
-            en
-            liste som kan lastes ned, ses i faktaark eller brukes direkte i kartklienter som støtter ArcGIS
-            REST
+            Alle data er hentet fra Artskart hos Artsdatabanken ved hjelp av automatiserte rutiner, og data oppdateres to ganger per uke. Egenskaper som er spesielt relevant for forvaltningen er referert øverst i faktaarket. Kriterietabellen viser hva som ligger til grunn for utvalget av arter.<br><br>
+            I mange tilfeller er det mer enn én observasjon av samme art på nøyaktig samme geografiske plassering. I slike tilfeller viser vi alle disse i tabellen Datagrunnlag fra Artskart, slik at hver enkelt observasjon er tilgjengelig. Tabellen inneholder feltnavn fra Artskart og er publisert uten bearbeiding fra Miljødirektoratet, bortsett fra formatering og presentasjon. Datagrunnlaget fra Artskart er lagret som en liste som kan lastes ned, ses i faktaark eller brukes direkte i kartklienter som støtter ArcGIS REST.<br>
         </div>
     </div>
 
