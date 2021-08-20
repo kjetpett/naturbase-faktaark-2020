@@ -32,9 +32,9 @@ require([
         SpatialReference,
         TileLayer,
         MapView) {
-        esriConfig.apiKey = "AAPK861135bc1c2345a1a7c3924b8e8529d69o1ebnK0M-FC6d5XRaylr4i2I6TSWYJi5Pvn590sC5kGdAufxmk61Ly1kxaswr2N";
+        esriConfig.apiKey = apiKey;
         /* exported basisKartUrl */
-        var basisKartUrl = 'https://services.geodataonline.no/arcgis/rest/services/Geocache_UTM33_EUREF89/GeocacheBasis/MapServer';
+        
 
         var mapExtent = new Extent({
             'xmin': 200000,
@@ -76,9 +76,9 @@ require([
         // var temaId = '6.583852_58.097869_3531'; // omr
         // Create graphics layer and symbol to use for displaying the results of query
         var geometriGraphicsLayer = new GraphicsLayer();
-        var observasjonerTableURL = "https://testarcgis02.miljodirektoratet.no/arcgis/rest/services/faktaark/artnasjonal/MapServer/2";
-        var punktLayerURL = "https://testarcgis02.miljodirektoratet.no/arcgis/rest/services/faktaark/artnasjonal/MapServer/0";
-        var omrLayerURL = "https://testarcgis02.miljodirektoratet.no/arcgis/rest/services/faktaark/artnasjonal/MapServer/1";
+        // var observasjonerTableURL = "https://testarcgis02.miljodirektoratet.no/arcgis/rest/services/faktaark/artnasjonal/MapServer/2";
+        // var punktLayerURL = "https://testarcgis02.miljodirektoratet.no/arcgis/rest/services/faktaark/artnasjonal/MapServer/0";
+        // var omrLayerURL = "https://testarcgis02.miljodirektoratet.no/arcgis/rest/services/faktaark/artnasjonal/MapServer/1";
 
         var geometriQuery = new Query();
         geometriQuery.where = 'ArtNasjonalId =\'' + temaId + '\'';
@@ -272,7 +272,7 @@ const feltDefinisjoner1 = [
     { navn: "Presisjon",            type: "int",    alias: "Presisjon (m)"             },
     { navn: "Status",               type: "text",   alias: "Rødlistekategori"          },
     { navn: "Kommune",              type: "text",   alias: "Kommune (kommunenummer)"   },
-    { navn: "Fylke",                type: "text",   alias: "Fyklke"                    },
+    { navn: "Fylke",                type: "text",   alias: "Fylke"                     },
     { navn: "Krit_Kombinert",       type: "text",   alias: "Utvalgskriterier"          }
 ];
 
@@ -324,14 +324,14 @@ const funnFeltdefinisjoner = [
 ];
 
 const kriterierFeltdefinisjoner = [
-    { navn: "Krit_Ansvarsart",      forklaring: ">25% av europeisk bestand i Norge",                alias: "Ansvarsart"},
-    { navn: "Krit_TruetArt",        forklaring: "CR,EN,VU i Norsk Rødliste",                        alias: "Truet art"},
-    { navn: "Krit_AndreSpesHensyn", forklaring: "andre arter av nasjonal forvaltningsinteresse",    alias: "Annen spesielt hensynskrevende art"},
-    { navn: "Krit_SpesOkologisk",   forklaring: "Former eller underarter av arter av nasjonal forvaltningsinteresse som ikke vurderes i Rødlisten", alias: "Spesiell økologisk form"},
-    { navn: "Krit_PrioritertArt",   forklaring: "prioritert art i medhold av naturmangfoldloven",   alias: "Prioritert art"},
-    { navn: "Krit_FredetArt",       forklaring: "fredet i medhold av naturvernloven",               alias: "Fredet art"},
-    { navn: "Krit_NarTruetArt",     forklaring: "NT i norsk rødliste",                              alias: "Nær truet art"},
-    { navn: "Krit_FremmedArt",      forklaring: "Svært høy og høy risiko i svartelista 2012, samt noen arter fra Svarteliste 2007",                alias: "Fremmed art"}
+    { navn: "Krit_Ansvarsart",      forklaring: "Norge har mer enn 25% av artens europeiske bestand",                                                                   alias: "Ansvarsart"},
+    { navn: "Krit_TruetArt",        forklaring: "Kategoriene Kritisk truet (CR), Sterkt truet (EN) og Sårbar (VU) i Norsk rødliste for arter, Norge (Artsdatabanken)",  alias: "Truet art"},
+    { navn: "Krit_AndreSpesHensyn", forklaring: "Andre arter av nasjonal forvaltningsinteresse, utvalgt av Miljødirektoratet",                                          alias: "Annen spesielt hensynskrevende art"},
+    { navn: "Krit_SpesOkologisk",   forklaring: "Former eller underarter av arter av nasjonal forvaltningsinteresse som ikke vurderes i rødlisten",                     alias: "Spesiell økologisk form"},
+    { navn: "Krit_PrioritertArt",   forklaring: "Prioritert art i medhold av naturmangfoldloven",                                                                       alias: "Prioritert art"},
+    { navn: "Krit_FredetArt",       forklaring: "fredet i medhold av naturvernloven",                                                                                   alias: "Fredet art"},
+    { navn: "Krit_NarTruetArt",     forklaring: "Kategorien Nær truet (NT) i Norsk rødliste for arter, Norge (Artsdatabanken)",                                         alias: "Nær truet art"},
+    { navn: "Krit_FremmedArt",      forklaring: "Kategoriene Svært høy risiko (SE) og Høy risiko (HI) i Fremmedartslista (Artsdatabanken)",                             alias: "Fremmed art"}
 ];
 
 /*
