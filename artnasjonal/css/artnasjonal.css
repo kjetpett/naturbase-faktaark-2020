@@ -1,52 +1,3 @@
-/* 
-#miljodir-header-bg {
-    background: white
-}
-
-#miljodir-header-table {
-    margin-left: auto;
-    margin-right: auto;
-    vertical-align: middle;
-}
-
-#miljodir-header-tittelTd {
-    color: #101010;
-    display: table-cell;
-    font-size: 22px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-    width: 49%;
-    vertical-align: middle;
-    border: 0;
-}
-
-#miljodir-barTd {
-    vertical-align: middle;
-    width: 5%;
-}
-
-#miljodir-barDiv {
-    width: 1px;
-    height: 42px;
-    background: url("../img/bar42.png") no-repeat;
-}
-
-#miljodir-header-logoTd {
-    padding-left: 20px;
-    width: 60%; 
-}
-
-#miljodir-header-tr {
-    height: 62px;
-}
-*/
-
-body {
-    /* line-height: 1.5; */
-    font-size: 0.80 m;
-} 
-
 #miljodir-logo {
     padding: 5%;
     width: 90%;
@@ -91,7 +42,7 @@ img.ramme {
     border: none;
 }
 
-.td-feltNavn {
+/* .td-feltNavn {
     font-weight: bold;
     width: 25%;
     vertical-align: top;
@@ -100,7 +51,7 @@ img.ramme {
 .td-feltData {
     font-weight: normal;
     width: 75%;
-}
+} */
 
 .centeredRow {
     text-align: center
@@ -130,13 +81,9 @@ img.ramme {
 }
 
 h1 {
-    /* margin-top: 0;
-    padding-top: 0;
-    font-weight: normal; */
     font-size: 2.11em;
     font-family: 'Verdana';
-    color: #016968;
-    /* line-height: 1; */
+    color: #005E5D;
 }
 
 h2 {
@@ -145,24 +92,30 @@ h2 {
     font-weight: normal;
     font-family: 'SofiaPro-Light';
     font-size: 16px; */
-    color: #016968;
+    color: #005E5D;
     font-size: 1.8em;
     /* line-height: 1; */
 }
 
 h3 {
-    color: #016968;
+    color: #005E5D;
     font-size: 1.6em;
 }
 
-
 a {
-    color: #016968;
+    color: #005E5D;
 }
 
 /* mindre luft i tabeller */
-.table td {
+/* .table td {
     padding: .20em;
+} */
+/* .table th {
+    padding: 1;
+} */
+
+.table td, .table th {
+    padding: 0.4rem
 }
 
 .collapsible {
@@ -208,7 +161,18 @@ a {
     background-color: #f1f1f1;
   }
 
-  input.gridjs-input {
+input.gridjs-input {
     padding: 3px 3px;
 }
-  
+
+.btn-primary, .btn-primary:active, .btn-primary:visited .btn-primary:focus .b {
+    background-color: #005E5D !important;
+    border-color: #005E5D !important;
+    box-shadow: none !important;
+}
+
+.btn-primary:hover {
+    background-color: #106E6D !important;
+    border-color: #106E6D !important;
+    box-shadow: none !important;
+}
