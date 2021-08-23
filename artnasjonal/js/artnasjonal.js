@@ -358,7 +358,7 @@ function formatterData (data, definisjon) {
         if (definisjon == 'epoch') {
             // data = new Date(data).toISOString().substring(0, 10); // returner dato
             data = new Date(data);
-            data = new String(`${data.getDate()}.${data.getMonth()}.${data.getFullYear()}`);
+            data = new String(`${data.getDate()}.${data.getMonth()+1}.${data.getFullYear()}`);
         }
         else if (definisjon == 'epochiso') {
             data = new Date(data).toISOString().split('T')[0]
