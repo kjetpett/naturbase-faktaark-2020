@@ -4,7 +4,7 @@ try {
     temaId = getURLParameter('id').toUpperCase();
 }
 catch (err) {
-    var temaId =  '9.545184_63.418554_3859'; // punkt
+    // var temaId =  '9.545184_63.418554_3859'; // punkt
     // var temaId = '6.573296_58.107913_3449'; //omr
     console.log(err);
 }
