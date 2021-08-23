@@ -260,7 +260,7 @@ require([
             console.log('Layer moved: ', event.moved);
         });
 
-        $('#utskriftsDatoDiv').text(new Date().toLocaleDateString());
+        $('#utskriftsDatoDiv').text(formatterData(new Date(), 'epoch'));
 
         function featureTilSkjerm(featureAttributes) {
             console.log(feltDefinisjoner1);
