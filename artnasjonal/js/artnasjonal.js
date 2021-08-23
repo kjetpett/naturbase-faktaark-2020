@@ -356,9 +356,12 @@ function formatterData (data, definisjon) {
     }
     else if (data) {
         if (definisjon == 'epoch') {
-            // data = new Date(data).toISOString().substring(0, 10); // returner dato
             data = new Date(data);
-            data = new String(`${data.getDate()}.${data.getMonth()+1}.${data.getFullYear()}`);
+            var day = String(data.getDate()).padStart(2,'0');
+            var month = String(data.getMonth()+1).padStart(2, '0');
+            var year = String(data.getFullYear());
+            data = `${day}.${month}.${year}`;
+            //data = new String(`${data.getDate()}.${data.getMonth()+1.padStart}.${data.getFullYear()}`);
         }
         else if (definisjon == 'epochiso') {
             data = new Date(data).toISOString().split('T')[0]
