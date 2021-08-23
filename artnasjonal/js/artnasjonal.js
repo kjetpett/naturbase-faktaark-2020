@@ -4,7 +4,7 @@ try {
     temaId = getURLParameter('id').toUpperCase();
 }
 catch (err) {
-    // var temaId =  '9.545184_63.418554_3859'; // punkt
+    var temaId =  '9.545184_63.418554_3859'; // punkt
     // var temaId = '6.573296_58.107913_3449'; //omr
     console.log(err);
 }
@@ -345,7 +345,7 @@ const kriterierFeltdefinisjoner = [
     { navn: 'Krit_AndreSpesHensyn', forklaring: 'Andre arter av nasjonal forvaltningsinteresse, utvalgt av Miljødirektoratet',                                          alias: 'Annen spesielt hensynskrevende art'},
     { navn: 'Krit_SpesOkologisk',   forklaring: 'Former eller underarter av arter av nasjonal forvaltningsinteresse som ikke vurderes i rødlisten',                     alias: 'Spesiell økologisk form'},
     { navn: 'Krit_PrioritertArt',   forklaring: 'Prioritert art i medhold av naturmangfoldloven',                                                                       alias: 'Prioritert art'},
-    { navn: 'Krit_FredetArt',       forklaring: 'fredet i medhold av naturvernloven',                                                                                   alias: 'Fredet art'},
+    { navn: 'Krit_FredetArt',       forklaring: 'Fredet art i medhold av naturmangfoldloven',                                                                           alias: 'Fredet art'},
     { navn: 'Krit_NarTruetArt',     forklaring: 'Kategorien Nær truet (NT) i Norsk rødliste for arter, Norge (Artsdatabanken)',                                         alias: 'Nær truet art'},
     { navn: 'Krit_FremmedArt',      forklaring: 'Kategoriene Svært høy risiko (SE) og Høy risiko (HI) i Fremmedartslista (Artsdatabanken)',                             alias: 'Fremmed art'}
 ];
@@ -357,7 +357,8 @@ function formatterData (data, definisjon) {
     else if (data) {
         if (definisjon == 'epoch') {
             // data = new Date(data).toISOString().substring(0, 10); // returner dato
-            data = new Date(data).toLocaleDateString();
+            data = new Date(data);
+            data = new String(`${data.getDate()}.${data.getMonth()}.${data.getFullYear()}`);
         }
         else if (definisjon == 'epochiso') {
             data = new Date(data).toISOString().split('T')[0]
