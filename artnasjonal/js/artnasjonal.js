@@ -272,7 +272,7 @@ require([
             console.log('Layer moved: ', event.moved);
         });
 
-        $('#utskriftsDatoDiv').text(new Date().toLocaleDateString());
+        $('#utskriftsDatoDiv').text(formatterData(new Date(), 'epoch'));
 
         function featureTilSkjerm(featureAttributes) {
             console.log(feltDefinisjoner1);
@@ -328,8 +328,12 @@ function formatterData (data, definisjon) {
     }
     else if (data) {
         if (definisjon == 'epoch') {
-            // data = new Date(data).toISOString().substring(0, 10); // returner dato
-            data = new Date(data).toLocaleDateString();
+            data = new Date(data);
+            var day = String(data.getDate()).padStart(2,'0');
+            var month = String(data.getMonth()+1).padStart(2, '0');
+            var year = String(data.getFullYear());
+            data = `${day}.${month}.${year}`;
+            //data = new String(`${data.getDate()}.${data.getMonth()+1.padStart}.${data.getFullYear()}`);
         }
         else if (definisjon == 'epochiso') {
             data = new Date(data).toISOString().split('T')[0]
