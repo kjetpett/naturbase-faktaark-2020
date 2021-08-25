@@ -1,54 +1,7 @@
-body {
-    line-height: 1.5;
-    font-size: 0.8em;
-}
-
-#miljodir-header-bg {
-    background: linear-gradient(#ffFFFF, #d8d8d8);
-}
-
-#miljodir-header-table {
-    margin-left: auto;
-    margin-right: auto;
-    vertical-align: middle;
-}
-
-#miljodir-header-tittelTd {
-    color: #101010;
-    display: table-cell;
-    font-family: 'Palatino Linotype', serif;
-    font-size: 22px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-    width: 49%;
-    vertical-align: middle;
-    border: 0;
-}
-
-#miljodir-barTd {
-    vertical-align: middle;
-    width: 5%;
-}
-
-#miljodir-barDiv {
-    width: 1px;
-    height: 42px;
-    background: url("../img/bar42.png") no-repeat;
-}
-
-#miljodir-header-logoTd {
-    padding-left: 20px;
-    width: 49%;
-}
-
 #miljodir-logo {
-    width: 152px;
-    height: 34px;
-}
-
-#miljodir-header-tr {
-    height: 62px;
+    padding: 5%;
+    width: 90%;
+    /* height: 80px; */
 }
 
 #map {
@@ -58,7 +11,7 @@ body {
     border: solid 1px #666666;
     height: 400px;
     width: 100%;
-    margin: 0;
+    margin: auto;
     padding: 0;
 }
 
@@ -89,24 +42,13 @@ img.ramme {
     border: none;
 }
 
-.td-feltNavn {
-    font-weight: bold;
-    width: 25%;
-    vertical-align: top;
-}
-
-.td-feltData {
-    font-weight: normal;
-    width: 75%;
-}
-
 .centeredRow {
     text-align: center
 }
 
 .heading {
     font-size: 1.5em;
-    font-family: "Palatino Linotype";
+    font-family: "Verdana";
     font-weight: bold;
     margin-bottom: 3px;
     color: #016968;
@@ -114,7 +56,7 @@ img.ramme {
 
 .headingMedium {
     font-size: 1.4em;
-    font-family: "Palatino Linotype";
+    font-family: "Verdana";
     font-weight: normal;
     margin-bottom: 3px;
     color: #016968;
@@ -125,34 +67,97 @@ img.ramme {
     text-align: center;
     top: 50%;
     bottom: 50%;
-
-}
-
-h2 {
-    margin-top: 0;
-    padding-top: 0;
-    font-weight: normal;
-    font-family: 'Open Sans Bold';
-    font-size: 16px;
-    color: #016968;
-    line-height: 1;
 }
 
 h1 {
-    margin-top: 0;
+    font-size: 2.11em;
+    font-family: 'Verdana';
+    color: #005E5D;
+}
+
+h2 {
+    /* margin-top: 0;
     padding-top: 0;
     font-weight: normal;
-    font-family: 'Open Sans Bold';
-    font-size: 24px;
-    color: #016968;
-    line-height: 1;
+    font-family: 'SofiaPro-Light';
+    font-size: 16px; */
+    color: #005E5D;
+    font-size: 1.8em;
+    /* line-height: 1; */
+}
+
+h3 {
+    color: #005E5D;
+    font-size: 1.6em;
 }
 
 a {
-    color: #016968;
+    color: #005E5D;
 }
 
-/* mindre luft i tabellen */
-.table td {
-    padding: .30em;
+.table td, .table th {
+    padding: 0.4rem
+}
+
+.collapsible {
+    background-color: #ebf3f3;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+  }
+
+  .collapsible:focus {
+    outline: none;
+  }
+  
+.active, .collapsible:hover {
+    background-color: #fff3f3;
+    outline: none;
+}
+  
+.collapsible:after {
+    content: '\002B';
+    color: black;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+    outline: none;
+}
+  
+.active:after {
+    content: "\2212";
+    outline: none;
+}
+
+.content {
+    padding: 0 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}
+
+input.gridjs-input {
+    padding: 3px 3px;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited .btn-primary:focus .b {
+    background-color: #005E5D !important;
+    border-color: #005E5D !important;
+    box-shadow: none !important;
+}
+
+.btn-primary:hover {
+    background-color: #106E6D !important;
+    border-color: #106E6D !important;
+    box-shadow: none !important;
+}
+
+#footer {
+    height: 150px;
+    text-align: center;
 }
