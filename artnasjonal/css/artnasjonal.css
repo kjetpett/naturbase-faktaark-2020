@@ -42,17 +42,6 @@ img.ramme {
     border: none;
 }
 
-/* .td-feltNavn {
-    font-weight: bold;
-    width: 25%;
-    vertical-align: top;
-}
-
-.td-feltData {
-    font-weight: normal;
-    width: 75%;
-} */
-
 .centeredRow {
     text-align: center
 }
@@ -106,14 +95,6 @@ a {
     color: #005E5D;
 }
 
-/* mindre luft i tabeller */
-/* .table td {
-    padding: .20em;
-} */
-/* .table th {
-    padding: 1;
-} */
-
 .table td, .table th {
     padding: 0.4rem
 }
@@ -128,38 +109,38 @@ a {
     text-align: left;
     outline: none;
     /* font-size: 15px; */
-  }
+}
 
-  .collapsible:focus {
+.collapsible:focus {
     outline: none;
-  }
+}
   
-  .active, .collapsible:hover {
+.active, .collapsible:hover {
     background-color: #fff3f3;
     outline: none;
-  }
+}
   
-  .collapsible:after {
+.collapsible:after {
     content: '\002B';
     color: black;
     font-weight: bold;
     float: right;
     margin-left: 5px;
     outline: none;
-  }
+}
   
-  .active:after {
+.active:after {
     content: "\2212";
     outline: none;
-  }
+ }
   
-  .content {
+.content {
     padding: 0 10px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
-  }
+}
 
 input.gridjs-input {
     padding: 3px 3px;
@@ -176,3 +157,8 @@ input.gridjs-input {
     border-color: #106E6D !important;
     box-shadow: none !important;
 }
+
+#footer {
+    height: 150px;
+    text-align: center;
+} 
