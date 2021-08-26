@@ -6,7 +6,7 @@ var dokumentUrl = 'https://felles.naturbase.no/api/dokument?objektID=';
 
 /* ArcGIS Server for faktaarktjenester */
 // var ServerUrl = 'https://arcgis03.miljodirektoratet.no/arcgis/rest/services/';
-var ServerUrl = 'https://trdetestarcgi01.miljodirektoratet.no/arcgis/rest/services/';
+var ServerUrl = 'https://testarcgis02.miljodirektoratet.no/arcgis/rest/services/';
 
 /* exported temaKonfigArray */
 var temaKonfigArray = [{
