@@ -186,7 +186,7 @@ require([
                     formatter: (cell) => {
                         // gridjs.html(`<a href="${cell}">${cell}xx</a>`);
                         if (cell.substring(0,4) == 'http') {
-                            return (gridjs.html(`<a href="${cell}" target="_blank">Artskart</a>`));
+                            return (gridjs.html(`<a href="${encodeURI(cell)}" target="_blank">Artskart</a>`));
                         }
                         else {
                             return (cell)
